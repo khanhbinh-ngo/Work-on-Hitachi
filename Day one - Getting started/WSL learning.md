@@ -27,6 +27,24 @@
 - user systemd to manage services
  
 2. how to?
-i mean, how to use and what is this concept?
-[tutorial of doing wsl](https://www.youtube.com/watch?v=bRW5r7TK6KM)
+    i mean, how to use and what is this concept?
+        [tutorial of doing wsl](https://www.youtube.com/watch?v=bRW5r7TK6KM)
+    Concept of this video
 
+3. basic git command
+
+    [basic git command](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html)
+
+    concept of this demo html:
+
+
+install some extension for this projects:
+1. AWS CLI Configure
+2. AWS CLI Credentials
+3. AWS Toolkit
+4. AWS boto3
+5. AWS CloudFormation Snippets
+6. AWS S3
+7. AWS Lambda
+
+we have more services, but just try some tutorial first.
