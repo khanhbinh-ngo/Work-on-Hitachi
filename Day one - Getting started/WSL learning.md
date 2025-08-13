@@ -41,7 +41,7 @@
 install some extension for this projects:
 1. AWS CLI Configure
 2. AWS CLI Credentials
-3. AWS Toolkit
+3. [AWS Toolkit](https://www.youtube.com/watch?v=3T6MrRIyrbo)
 4. AWS boto3
 5. AWS CloudFormation Snippets
 6. AWS S3
