@@ -71,8 +71,8 @@ c. step by step
     unzip awscliv2.zip
     sudo ./aws/install --update
 
-    secret key AKIA4ZLZKMUC4RRTGSIC
-    secret access key  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
+    random code zip AKIA4ZLZKMUC4RRTGSIC
+    random code zip sec  bgF6e49049tO+r2sxx1MhwuCaPB/ZNU+wy15/G8/
     - then we can actually config the aws cli so that we can acuthenticate and communicate with the aws environment
 
     aws configure
