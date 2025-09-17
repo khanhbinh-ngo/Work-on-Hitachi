@@ -1,4 +1,4 @@
-learning Cloudfront
+learning Cloudfront: 17092025
 
 ## I. Basic knowledge and how to use Cloudfront with S3
 1. what is cloudfront
@@ -85,4 +85,35 @@ Chia sẻ cấu hình DNS chung trên nhiều tên miền.
         Create a connection group. that group cointrol
     + when create one more distribution tenant:
         distribution tenant would be the front door and some how.
-    + after something, we achieved the own dns host to route traffic  to the distribution tenant.
+    + after something, we achaieved the own dns host to route traffic  to the distribution tenant.
+
+Learning CloudFront: 18092025
+Doing some lab:
+
+## **Lab 1: Understand how sinngle tenant distributions work**
+
+1. Create S3 bucket
+Here I created one bucket:
+- name: culaotime-cloudfront-single-tenant
+- object ownnership: ACLs disabled
+- block public access: block all public access
+- bucket versioning: disabled
+- all is for default settings.
+![Create S3 bucket](/IT'S CU LAO TIME/CloudFront/Snapshot/Create_S3_bucket.png)
+
+2. Upload content to S3 bucket (one single index.html file)
+- Create one simple index.html file and upload to s3 bucket
+![Upload content to S3 bucket](/IT'S CU LAO TIME/CloudFront/Snapshot/Update_index_file.png)
+
+3. Set permission for S3 bucket (Make it private only)
+
+4. Enable static website hosting for S3 bucket
+nah that's something good to do
+5. Create cloudfront distribution
+6. Access content using cloudfront domain name
+7. Access content using S3 bucket endpoint (to compare the speed)
+
+
+**Note**: 
+- Note 1: the outline 6. and 7. is for compare 2 methods, also make them very clear to understand
+- Image markdown syntax: ![alt text](/Snapshot/image_name.png)
