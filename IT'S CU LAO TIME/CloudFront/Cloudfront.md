@@ -149,3 +149,30 @@ Slime thing: deep dive to this shit (*cause I have no idea what is this)
 - SSL/TLS cerrtificate - ACM: to a custom domains have HTTPS
 - signed url/cookie: to restrict access to the content
 - aws waf and shield: preventing ddos and malware request
+
+6. Monitoring and logging
+a. Monitoring with cloudwatch metrics
+- we can use s3 sserver access loggin or s3 cloudtrail data event.
+- then we can see:
+    + PrincipalId (instead of user random) for cloudfront
+    + Requester (ip address of the user) (which is use set in condition)
+- If we see request from public ip user: then mean oac is not working good (then have some wrong policy)
+cloudfront metrix have some thing:
+    + 4xxErrorRate: the rate of 4xx error (403, 404...)
+    + 5xxErrorRate: the rate of 5xx error (500, 502, 503...)
+    + TotalErrorRate: the rate of all error (4xx and 5xx)
+    + CacheHitRate: the rate of cache hit
+    + CacheMissRate: the rate of cache miss
+    + BytesDownloaded/BytesUploaded: the amount of data downloaded/uploaded
+    + Requests: the number of requests
+    + Latency: the time taken to serve a request
+
+b. Logging with cloudfront:
+- We can enable standard logs or real-time logs
+- check those field:
+    - sc-status (status code: 200, 403, 404, 500...)
+    - x-edge-result-type (hit, miss, error...)
+    - x-edge-detailed-result-type (more detail)
+- if oac is working good, all the request comes to s3 all access the cloudfront, prevent the outbound request.
+
+
