@@ -117,3 +117,35 @@ nah that's something good to do
 **Note**: 
 - Note 1: the outline 6. and 7. is for compare 2 methods, also make them very clear to understand
 - Image markdown syntax: ![alt text](/Snapshot/image_name.png)
+
+
+## 
+Slime thing: deep dive to this shit (*cause I have no idea what is this)
+
+1. First layer: distribution
+- this called main container, which is covered by a dns looks like asdfasjdflas.cloudfront.net
+- in the distribution contained:
+    + origin
+    + behavior ( mapping the request to the origin)
+    + cache, priority or logging
+
+2. Origin:  Data layer
+- source of data:
+    + s3 bucket (statics file)
+    + EC2/ALB: app and something
+    + API gateway or mediapackage (or over the aws)
+- we can use more than one origin within the distribution
+
+3. behavior
+- each behavior could map for each cache policy, or origin request policy 
+- THis will decide hthe long of cache, do sent query stri8ng/cookie/header or not
+
+4. Cache and policy
+- cache policy: how to control cloudfront cache (TTL, forward querystring, header, cookie...)
+- origin request policy: control which request should forward to the origin (but only forward a suitable information - avoiding overweight)
+
+5. Security:
+- OAC (origin access control): or OAI: S3 key, to keep user not try to byass thed CloudFront.
+- SSL/TLS cerrtificate - ACM: to a custom domains have HTTPS
+- signed url/cookie: to restrict access to the content
+- aws waf and shield: preventing ddos and malware request
