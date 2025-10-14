@@ -227,15 +227,171 @@
             - requeest unused ec2 instances, wihch can lower uyour cost significantly.
             - generally chealpasdfst option although not always
             - maximum prices (hell yeahhhh)
+        - ec2 purchasing options
+            - reverssed instances
+            - scheduled instances
+            - on demand capacity reservations
+            - dedicated instances
+            - dedicated hosts
+        - ec2 saving plans (I have none to know that, but I would probably learn that on other time)
+
+        - ec2 instance types: based on which you want to use cloud calculating power
+
+            - general purpose
+                - small and midsize database, data processing tasks that require additional memory, caching fleets and for running backed server for sap, microsoft sharepoint, cluster computing nad other enterprise applications (t2, m3 and m4)
+            - compute optimiuuzed:
+                - high performance front end fleets, webservers batch processing, some high-end application with optimize for compute task
+            - memory optimized:
+                - high performance databse, like distributed memory caches, in-memory analytics, and so on
+            - gpu/accelerated computing
+            - storage optimized (some how we could use nosql, database like cassandra or mongodb), just optimizting for storage task
+            - and what about linux or windows operating systme? notgood but have more responsibility just for surel
+            - ec2 bare metal instances: non-vm environments
+                - os running directly on that hardware
+                - suitable for
+                    - applications that benefit from deep performances analysis tool 
+                    - some how leagacy workloads not supopoered in virtual environment
+                    - licensing- restricted tier 1 business critical aoplications
+                    have more thing like i3 and metal somehow
+            - understanding t2 and t3 burstable perforlamsdf ce
+                - like, they have more and more perfomancee bare pwer to burst.
+                - unlimited mode provides high cpu at a flat additional razte of 5% pervcpos hors for as long as needed.
+                - if yoru instance does not maintain a positive cpu fcredit balance for bursting consider upgradding to larger instance
+            - graviton instance types (like, an grtaviton = custom chip designed by aws and used by arm neoverse architecture (which is not familiar with intel x86))
+                - they like bult specifically for
+                    - lower cost per compute
+                    - lower power consumption
+                    - high efficiency for modern workloads (microservices, containers, java)
+                - graviton ver 2 processors provide up to 40% better p/p over compaable current generatiion x86 based instances
+                - perfect for scale out applications taht can run on small cores (I have no idea waht is that or how to understand the words "applications that can run on small cores")
+            - ec2 fleet:
+                - launch a fleet, or a grup, of instances
+                - like, theyt have unlimited number of inscances types per ec2 fleets.
+                some how like that
+        - so the amazon machine images (AMI)
+            - provides the information required to launch an instances 
+                - a template for the root volume for the instances (LIKE OS, applications serv er, appkuicatosnfasdf)
+                - launch permissions that control which aws accounts can use the ami to lauhch iunstances
+                - this is a block devieces mapping that specifies the vomumes to attach to the siuntacnes when it launcched
+        - ec2 instance states
+            - there are 4 states of a ec2
+                - start
+                - stop (ebs backed only)
+                    - instance is shutdown with no instance chares
+                    - still charged for ebs volumes
+                    - minimum of 1 minunets charsf on restart
+                - stop/hibernate (ebs backed only)
+                    - suspend to disk
+                    - saves ram to ebs
+                - reboot
+                    - operating system reboot 
+                - terminate
+            - we can use ami to launch and somehow. there are some thing that we could use (have a life circle of these ec2)
     2. instance lifecycle
+        - ami - pending <----------------
+                    |                   |
+    rebooting - running -> stopping -> stopped
+                    |
+                shutting down
+                    |
+                terminated
+
+    like so, and then when we stopped the instace wie could terminated it or pending it. eazii
 
     3. storage options
+        - ec2 storage options
+            that here we have some common sence to understand, but jst save directly to the ec2, nor other outer storage services like s3
 
+            - elastic bloc storage (ebs)
+                - most common
+                - ebs volumes attacheed at instance launch are deleted when instances terminated
+                - ebs volumes attached to a running instance are not deleted when instace is terminated but are detached with data intact
+
+            - instance store
+                - pyysically attached to teh host server
+                - data would lost when:
+                    - underlying drive failes
+                    - instance interminated
+            - to sum up, this is just a very very temporary solutionasdf
+            
+            ebs storage options
+                - general purpose ssd
+                - provisiioned iops ssd
+                - cold hdd
+                    - lowest cost per gigabyte
     4. remote access
+        - ec2 linux server
+            - well, we could use secure shell (SSH) to connect wiht ec2
+            - your windows requires ssh or bash client 
+            - requyires PEM key file (somehow, ez)
+        - ec2 windws server
+            - use remote desktop protocol 
+            - port 3389
+            - admin password (just incase)
+        - ec2 instance connect
+            - easiesst and safest method of cconnecting to ec2 linux
+            - hov so
+            - use iam policies to control acceess
+            - does not require pem file
 
 26. s3
+    terminology
+        - bucket
+            - container for objectsc
+            - total volume of data somehow are unlimited
+            - bucket name have the rulesets for them 
+        - object
+            - entities
+            - maximum is 5tb
+            - largest object upload is 5gb (some how)
+        - this thing is secure by default but can be modified through many thing like bucket policies, acl, iam policies
 
-27. exploring the default vps
+    1. storage classes
+        - standard: lifecycle management
+        - standard but with infrequent acess same feature, loower per gb storage price than standard
+        - standard but with one zone ia: per gb retruieveal fee 
+        - reduced redunadancy storage some how: retired and replacesd with ia 
+        some how like that
+        - special: s3 intelligent tiering
+            - same features a standard ia witout retrieval fee
+            - automatically moves objects between 2 access tier (like frequent and infrequent access) 
+            - objects that have not been accessed for 30 days moved to the infrequent access
+            - small montly monitoring and autoamtion fee
+        - special: oobject level confirugratasd:\
+            - SINGLE bucket but have contain s3 standard, s3 intelligent tearing, s3 standard ia, and s3 one zone ia
+            
+
+    2. glacier
+     
+    3. lifecycle
+
+        - like, object delection after expiry time
+        - object archiving to glacier after expiry time
+        - canbe resotred from glacier back to s3 (I don't think we want to do that thing)
+        - s3 versioning
+            - preserves copoes of objentcs inside a bucket
+            - individual pbijecas can be resotred to previous version
+            -deleted objecnt can be recovered
+
+    4. cross--region replication
+        - like, reduced lantency for end user (have no idea thwatas hawk tuyaks  )
+        - both source and destination buckets need versionning enabled if usign versioning
+        - acl details updated
+            -s3 eenabled encyasr tipn replicated
+            - kms encryotion not replicated
+        - sinces that have collecetasd, have some thing here
+            - need to copy existing ibjct to new region,
+            - repoicationas always take place between a pair of aws reguion 
+            - bukckets can be soruce bu ker tfor anotehr cross region
+    5. amazon macie (how we can monitor s3 bucket and modify skill issue)
+        - uses ml and pattern machine to monitor, docerver and alert you to securitty issue with s3 buckets:
+            -sensitive data such as persoanllyu idntification information like you
+            - using one click and uysing command line inverface then  or api and sl
+            - monitizing yuour bucket and find out your sensored information or security issues,m and create some solutiopns wich is more thign taosdijfa s
+
+26. additional part: s3 version control and lifiecycle managemen
+**somehow, we have to use that thing and create something, let's version control the s3 thing bullshit.: have to syncronize to other region, to only have one version of data which is downloadble from andyuser.
+27. exploring the default 
 
 28. cloudwatch
 
